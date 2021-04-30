@@ -12,7 +12,18 @@ module.exports = {
     filename: 'app.bundle.js'
   },
   module: {
-
+    rules: [
+      {
+        test: /\.js$/,
+        include: path.resolve(__dirname, 'src', 'js'),
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+          },
+        },
+      },
+    ],
   },
   plugins: [
     new CopyPlugin({
