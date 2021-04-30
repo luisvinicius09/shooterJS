@@ -1,7 +1,7 @@
 {
-  "name": "app_name_here",
+  "name": "shooterjs",
   "version": "1.0.0",
-  "description": "PUT THE PROJECT DESCRIPTION HERE",
+  "description": "Simple shooter game build with PhaserJS",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,7 +14,13 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "REMEBER TO PUT THE ISSUES PAGE RIGHT HERE"
+    "url": "https://github.com/luisvinicius09/shooterJS/issues"
   },
-  "homepage": "GITHUB PAGE OR URL OF THE PROJECT HERE"
+  "homepage": "https://github.com/luisvinicius09/shooterJS",
+  "devDependencies": {
+    "copy-webpack-plugin": "^8.1.1",
+    "webpack": "^5.36.2",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2"
+  }
 }
