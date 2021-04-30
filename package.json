@@ -4,7 +4,11 @@
   "description": "Simple shooter game build with PhaserJS",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx jest",
+    "build": "npx webpack",
+    "watch": "npx webpack --watch",
+    "webpackServer": "npx webpack serve",
+    "server": "npx http-server build"
   },
   "repository": {
     "type": "git",
@@ -22,6 +26,8 @@
     "@babel/preset-env": "^7.14.0",
     "babel-loader": "^8.2.2",
     "copy-webpack-plugin": "^8.1.1",
+    "http-server": "^0.12.3",
+    "jest": "^26.6.3",
     "webpack": "^5.36.2",
     "webpack-cli": "^4.6.0",
     "webpack-dev-server": "^3.11.2"
