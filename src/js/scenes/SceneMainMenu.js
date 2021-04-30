@@ -1,12 +1,12 @@
-export class SceneLeaderboard extends Phaser.Scene {
+export class SceneMainMenu extends Phaser.Scene {
   constructor() {
     super({
-      key: 'SceneLeaderboard',
+      key: 'SceneMainMenu',
     });
   };
 
   preload() {
-
+    
   };
 
   create() {

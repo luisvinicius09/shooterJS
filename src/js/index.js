@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import SceneMainMenu from './scenes/ScenMainMenu';
+import SceneMainMenu from './scenes/SceneMainMenu';
 import SceneMain from './scenes/SceneMain';
 import SceneLeaderboard from './scenes/SceneLeaderboard';
 import SceneGameOver from './scenes/SceneGameOver';
