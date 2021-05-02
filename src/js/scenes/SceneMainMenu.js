@@ -1,4 +1,4 @@
-export class SceneMainMenu extends Phaser.Scene {
+export default class SceneMainMenu extends Phaser.Scene {
   constructor() {
     super({
       key: 'SceneMainMenu',
@@ -10,7 +10,7 @@ export class SceneMainMenu extends Phaser.Scene {
   };
 
   create() {
-
+    this.scene.start('SceneMain');
   };
 
   update() {

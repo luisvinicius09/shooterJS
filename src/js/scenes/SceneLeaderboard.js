@@ -1,4 +1,4 @@
-export class SceneLeaderboard extends Phaser.Scene {
+export default class SceneLeaderboard extends Phaser.Scene {
   constructor() {
     super({
       key: 'SceneLeaderboard',
