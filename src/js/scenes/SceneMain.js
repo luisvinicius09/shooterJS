@@ -14,9 +14,14 @@ export default class SceneMain extends Phaser.Scene {
     this.load.spritesheet('sprPlayer', './img/playerShip.png', {
       frameWidth: 478,
       frameHeight: 348,
-    })
+    });
     
     this.load.image('sprLaser1', './img/playerLaser1.png');
+
+    this.load.spritesheet('sprExplosion', './img/explosion.png', {
+      frameWidth: 32,
+      frameHeight: 32,
+    });
 
     this.load.spritesheet('sprEnemyShip0', './img/enemyShip0.png', {
       frameWidth: 92,
@@ -64,6 +69,14 @@ export default class SceneMain extends Phaser.Scene {
       repeat: -1,
     });
 
+    this.anims.create({
+      key: 'sprExplosion',
+      frames: this.anims.generateFrameNumbers('sprExplosion'),
+      frameRate: 20,
+      repeat: 0,
+    });
+
+
     this.sfx = {
       explosions: [
         this.sound.add('sndExplosion', { volume: 0.5 }),
@@ -73,7 +86,7 @@ export default class SceneMain extends Phaser.Scene {
 
     this.player = new Player(
       this,
-      this.game.config.width * 0.5,
+      this.game.config.width * 0.1,
       this.game.config.height * 0.5,
       'sprPlayer',
     );
@@ -129,7 +142,7 @@ export default class SceneMain extends Phaser.Scene {
         if (enemy.onDestroy !== undefined) {
           enemy.onDestroy();
         }
-        enemy.explode();
+        enemy.explode(true);
         playerLaser.destroy();
       }
     });
@@ -141,7 +154,7 @@ export default class SceneMain extends Phaser.Scene {
       }
     });
 
-    this.physics.add.overlap(this.player, this.enemies, (player, laser) => {
+    this.physics.add.overlap(this.player, this.enemyLasers, (player, laser) => {
       if (!player.getData('isDead') && !laser.getData('isDead')) {
         player.explode(false);
         laser.destroy();
