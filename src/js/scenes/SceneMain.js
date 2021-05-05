@@ -78,7 +78,7 @@ export default class SceneMain extends Phaser.Scene {
       'sprPlayer',
     );
 
-    this.player.setScale(.2);
+    this.player.setScale(.13);
 
     this.playerLasers = this.add.group();
     this.enemies = this.add.group();
@@ -114,39 +114,104 @@ export default class SceneMain extends Phaser.Scene {
           );
           enemy.setScale(0.8);
           enemy.setAngle(90);
-        }
-        this.enemies.add(enemy);
+        };
+
+        if (enemy !== null) {
+          this.enemies.add(enemy);
+        };
       },
       callbackScope: this,
       loop: true,
     });
+
+    this.physics.add.collider(this.playerLasers, this.enemies, (playerLaser, enemy) => {
+      if (enemy) {
+        if (enemy.onDestroy !== undefined) {
+          enemy.onDestroy();
+        }
+        enemy.explode();
+        playerLaser.destroy();
+      }
+    });
+
+    this.physics.add.overlap(this.player, this.enemies, (player, enemy) => {
+      if (!player.getData('isDead') && !enemy.getData('isDead')) {
+        player.explode(false);
+        enemy.explode(true);
+      }
+    });
+
+    this.physics.add.overlap(this.player, this.enemies, (player, laser) => {
+      if (!player.getData('isDead') && !laser.getData('isDead')) {
+        player.explode(false);
+        laser.destroy();
+      }
+    })
   };
 
   update() {
-    this.player.update();
+    if (!this.player.getData('isDead')) {
+        this.player.update();
 
-    if (this.keyUp.isDown) {
-      this.player.moveUp();
+        if (this.keyUp.isDown) {
+          this.player.moveUp();
+        }
+
+        if (this.keyDown.isDown) {
+          this.player.moveDown();
+        }
+
+        if (this.keyLeft.isDown) {
+          this.player.moveLeft();
+        }
+
+        if (this.keyRight.isDown) {
+          this.player.moveRight();
+        }
+
+        if (this.keySpace.isDown) {
+          this.player.setData('isShooting', true);
+        } else {
+          this.player.setData('timerShootTick', this.player.getData('timerShootDelay') - 1);
+          this.player.setData('isShooting', false);
+        }
+    }
+     for (let i = 0; i < this.enemies.getChildren().length; i += 1) {
+      let enemy = this.enemies.getChildren()[i];
+
+      enemy.update();
+
+      if (enemy.x < -enemy.displayWidth * 4||
+          enemy.x > this.game.config.width + enemy.displayWidth ||
+          enemy.y < -enemy.displayHeight ||
+          enemy.y > this.game.config.height + enemy.displayHeight
+        ) {
+          if (enemy) {
+            if (enemy.onDestroy !== undefined) {
+              enemy.onDestroy();
+            }
+
+            enemy.destroy();
+          }
+      };
+    };
+
+    for (let i = 0; i < this.enemyLasers.getChildren().length; i += 1) {
+      let laser = this.enemyLasers.getChildren()[i];
+
+      laser.update();
+
+      if(laser.x < -laser.displayWidth ||
+         laser.x > this.game.config.width + laser.displayWidth ||
+         laser.y < -laser.displayHeight ||
+         laser.y > this.game.config.height + laser.displayHeight
+        ) {
+          if (laser) {
+            laser.destroy();
+          }
+      }
     }
 
-    if (this.keyDown.isDown) {
-      this.player.moveDown();
-    }
-
-    if (this.keyLeft.isDown) {
-      this.player.moveLeft();
-    }
-
-    if (this.keyRight.isDown) {
-      this.player.moveRight();
-    }
-
-    if (this.keySpace.isDown) {
-      this.player.setData('isShooting', true);
-    } else {
-      this.player.setData('timerShootTick', this.player.getData('timerShootDelay') - 1);
-      this.player.setData('isShooting', false);
-    }
   };
 
   getEnemiesByType(type) {

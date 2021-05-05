@@ -8,7 +8,23 @@ export class Entity extends Phaser.GameObjects.Sprite {
     this.setData('isDead', false);
   };
 
-  explode() {
+  explode(canDestroy) {
+    if (!this.getData('isDead')) {
+      if (this.shootTimer) {
+        this.shootTimer.remove(false);
+      }
+    }
+    this.setAngle(0);
+    this.body.setVelocity(0, 0);
 
+    this.on('animationcomplete', () => {
+      if (canDestroy) {
+        this.onDestroy();
+      } else {
+        this.setVisible(false);
+      }
+    }, this);
+
+    this.setData('isDead', true);
   }
 }
