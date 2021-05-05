@@ -18,7 +18,7 @@ export class ChaserTrap extends Entity {
           this.y,
           this.scene.player.x,
           this.scene.player.y,
-        ) < 320) {
+        ) < 320 && !this.scene.player.getData('isDead')) {
           this.state = this.states.CHASE;
         }
 
