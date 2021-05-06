@@ -40,7 +40,9 @@ export default class SceneMain extends Phaser.Scene {
     this.load.audio('sndLaser', './audio/laserfire02.ogg');
     this.load.audio('sndExplosion', './audio/explosion1.wav');
     
-    this.load.image('sprBg', './img/background.png');
+    this.load.image('sprBg0', './img/background.png');
+    this.load.image('sprBg1', './img/sprBg1.png');
+    this.load.image('sprBg2', './img/sprBg2.png');
   };
 
   create() {    
@@ -86,11 +88,15 @@ export default class SceneMain extends Phaser.Scene {
       laser: this.sound.add('sndLaser', { volume: 0.2 }),
     };
 
+
     this.backgrounds = [];
     for (let i = 0; i < 5; i += 1) {
-      let bg = new ScrollingBackground(this, 'sprBg', i * 10);
+      let bg = new ScrollingBackground(this, 'sprBg1', -(i * 9));
       this.backgrounds.push(bg);
     }
+
+    let bg = this.add.sprite(0, 0, 'sprBg0');
+    bg.setDepth(-10);
 
     this.player = new Player(
       this,
