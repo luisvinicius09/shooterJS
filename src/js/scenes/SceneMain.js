@@ -2,7 +2,7 @@ import { ChaserTrap } from './Entities/ChaserTrap';
 import { GunShip } from './Entities/GunShip';
 import { Player } from './Entities/Player';
 import { CarrierShip } from './Entities/CarrierShip';
-
+import { ScrollingBackground } from './Entities/Entity'
 export default class SceneMain extends Phaser.Scene {
   constructor() {
     super({
@@ -39,6 +39,8 @@ export default class SceneMain extends Phaser.Scene {
 
     this.load.audio('sndLaser', './audio/laserfire02.ogg');
     this.load.audio('sndExplosion', './audio/explosion1.wav');
+    
+    this.load.image('sprBg', './img/background.png');
   };
 
   create() {    
@@ -83,6 +85,12 @@ export default class SceneMain extends Phaser.Scene {
       ],
       laser: this.sound.add('sndLaser', { volume: 0.2 }),
     };
+
+    this.backgrounds = [];
+    for (let i = 0; i < 5; i += 1) {
+      let bg = new ScrollingBackground(this, 'sprBg', i * 10);
+      this.backgrounds.push(bg);
+    }
 
     this.player = new Player(
       this,
