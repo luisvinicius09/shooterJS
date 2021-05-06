@@ -2,7 +2,7 @@ import { ChaserTrap } from './Entities/ChaserTrap';
 import { GunShip } from './Entities/GunShip';
 import { Player } from './Entities/Player';
 import { CarrierShip } from './Entities/CarrierShip';
-import { ScrollingBackground } from './Entities/Entity'
+import { ScrollingBackground } from './utils/ScrollingBackground'
 export default class SceneMain extends Phaser.Scene {
   constructor() {
     super({

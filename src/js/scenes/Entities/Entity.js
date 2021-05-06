@@ -33,5 +33,5 @@ export class Entity extends Phaser.GameObjects.Sprite {
     }, this);
 
     this.setData('isDead', true);
-  }
+  };
 }
