@@ -29,9 +29,5 @@ export class ScrollingBackground {
           layer.y = (-laser.displayHeight) + (layer.displayHeight * i);
       }
     };
-
-    for (let i = 0; i < this.backgrounds.length; i++) {
-      this.background[i].update();
-    }
   };
 }
