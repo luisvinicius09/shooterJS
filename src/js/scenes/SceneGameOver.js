@@ -64,6 +64,31 @@ export default class SceneGameOver extends Phaser.Scene {
       this.scene.start('SceneMain');
     }, this);
 
+    this.btnLeaderboard = this.add.sprite(
+      this.game.config.width * 0.5,
+      this.game.config.height * 0.6,
+      'sprBtnLeaderboard'
+    )
+    this.btnLeaderboard.setInteractive();
+
+    this.btnLeaderboard.on('pointerover', () => {
+      this.btnLeaderboard.setTexture('sprBtnLeaderboardHover');
+      this.sfx.btnOver.play();
+    });
+
+    this.btnLeaderboard.on('pointerout', () => {
+      this.btnLeaderboard.setTexture('sprBtnLeaderboard');
+    });
+
+    this.btnLeaderboard.on('pointerdown', () => {
+      this.btnLeaderboard.setTexture('sprBtnLeaderboardDown');
+      this.sfx.btnDown.play();
+    })
+
+    this.btnLeaderboard.on('pointerup', () => {
+      this.scene.start('SceneLeaderboard');
+    })
+
     this.backgrounds = [];
     for (let i = 0; i < 5; i += 1) {
       let bg = new ScrollingBackground(this, 'sprBg1', -(i * 10));
