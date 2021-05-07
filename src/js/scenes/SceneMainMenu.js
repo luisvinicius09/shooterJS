@@ -14,6 +14,9 @@ export default class SceneMainMenu extends Phaser.Scene {
     this.load.image('sprBtnRestart', './img/buttons/sprBtnRestart.png');
     this.load.image('sprBtnRestartHover', './img/buttons/sprBtnRestartHover.png');
     this.load.image('sprBtnRestartDown', './img/buttons/sprBtnRestartDown.png');
+    this.load.image('sprBtnLeaderboard', './img/buttons/sprBtnLeaderboard.png');
+    this.load.image('sprBtnLeaderboardHover', './img/buttons/sprBtnLeaderboardHover.png');
+    this.load.image('sprBtnLeaderboardDown', './img/buttons/sprBtnLeaderboardDown.png');
 
     this.load.audio('sndBtnOver', './audio/buttons/sndBtnOver.wav');
     this.load.audio('sndBtnDown', './audio/buttons/sndBtnDown.wav');
@@ -73,6 +76,30 @@ export default class SceneMainMenu extends Phaser.Scene {
     let bg = this.add.sprite(0, 0, 'sprBg0');
     bg.setDepth(-10);
 
+    this.btnLeaderboard = this.add.sprite(
+      this.game.config.width * 0.5,
+      this.game.config.height * 0.6,
+      'sprBtnLeaderboard'
+    )
+    this.btnLeaderboard.setInteractive();
+
+    this.btnLeaderboard.on('pointerover', () => {
+      this.btnLeaderboard.setTexture('sprBtnLeaderboardHover');
+      this.sfx.btnOver.play();
+    });
+
+    this.btnLeaderboard.on('pointerout', () => {
+      this.btnLeaderboard.setTexture('sprBtnLeaderboard');
+    });
+
+    this.btnLeaderboard.on('pointerdown', () => {
+      this.btnLeaderboard.setTexture('sprBtnLeaderboardDown');
+      this.sfx.btnDown.play();
+    })
+
+    this.btnLeaderboard.on('pointerup', () => {
+      this.scene.start('SceneLeaderboard');
+    })
   };
 
   update() {
