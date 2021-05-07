@@ -151,6 +151,14 @@ export default class SceneMain extends Phaser.Scene {
       loop: true,
     });
 
+    let score = 0;
+    let scoreText;
+
+    scoreText = this.add.text(16, 16, 'Score: 0', {
+      fontSize: '32px',
+      fill: '#fff',
+    });
+
     this.physics.add.collider(this.playerLasers, this.enemies, (playerLaser, enemy) => {
       if (enemy) {
         if (enemy.onDestroy !== undefined) {
@@ -158,6 +166,8 @@ export default class SceneMain extends Phaser.Scene {
         }
         enemy.explode(true);
         playerLaser.destroy();
+        score += 10;
+        scoreText.setText('Score: ' + score);
       }
     });
 
