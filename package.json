@@ -33,6 +33,8 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
+    "axios": "^0.21.1",
+    "dotenv": "^9.0.0",
     "phaser": "^3.54.0"
   }
 }
