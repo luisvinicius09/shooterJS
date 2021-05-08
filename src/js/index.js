@@ -3,6 +3,7 @@ import SceneMainMenu from './scenes/SceneMainMenu';
 import SceneMain from './scenes/SceneMain';
 import SceneLeaderboard from './scenes/SceneLeaderboard';
 import SceneGameOver from './scenes/SceneGameOver';
+import ScenePause from './scenes/ScenePause';
 
 const config = {
   type: Phaser.WEBGL,
@@ -20,6 +21,7 @@ const config = {
     SceneMain,
     SceneLeaderboard,
     SceneGameOver,
+    ScenePause,
   ],
   pixelArt: true,
   roundPixels: true,
