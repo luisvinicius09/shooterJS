@@ -86,20 +86,20 @@ export default class SceneMainMenu extends Phaser.Scene {
     this.btnLeaderboard.on('pointerover', () => {
       this.btnLeaderboard.setTexture('sprBtnLeaderboardHover');
       this.sfx.btnOver.play();
-    });
+    }, this);
 
     this.btnLeaderboard.on('pointerout', () => {
       this.btnLeaderboard.setTexture('sprBtnLeaderboard');
-    });
+    }, this);
 
     this.btnLeaderboard.on('pointerdown', () => {
       this.btnLeaderboard.setTexture('sprBtnLeaderboardDown');
       this.sfx.btnDown.play();
-    })
+    }, this)
 
     this.btnLeaderboard.on('pointerup', () => {
       this.scene.start('SceneLeaderboard');
-    })
+    }, this)
   };
 
   update() {

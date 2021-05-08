@@ -10,9 +10,9 @@ export default class SceneGameOver extends Phaser.Scene {
   };
 
   preload() {
-    this.load.image('sprBtnPlay', './img/buttons/sprBtnPlay.png');
-    this.load.image('sprBtnPlayHover', './img/buttons/sprBtnPlayHover.png');
-    this.load.image('sprBtnPlayDown', './img/buttons/sprBtnPlayDown.png');
+    this.load.image('sprBtnSave', './img/buttons/sprBtnSave.png');
+    this.load.image('sprBtnSaveHover', './img/buttons/sprBtnSaveHover.png');
+    this.load.image('sprBtnSaveDown', './img/buttons/sprBtnSaveDown.png');
     this.load.image('sprBtnRestart', './img/buttons/sprBtnRestart.png');
     this.load.image('sprBtnRestartHover', './img/buttons/sprBtnRestartHover.png');
     this.load.image('sprBtnRestartDown', './img/buttons/sprBtnRestartDown.png');
@@ -40,31 +40,35 @@ export default class SceneGameOver extends Phaser.Scene {
       btnDown: this.sound.add('sndBtnDown'),
     };
 
-    this.inputName = document.createElement('input');
+    const div = document.createElement('div');
+    div.innerHTML = `
+      <input type="text" id="nameField" placeholder="Enter your name" style="font-size: 1.5rem width: ${this.game.config.width * 0.25}"><br>
+      <input type="button" name="submitButton" value="Submit Score" style="font-size: 1.5rem">
+    `;
 
     this.btnSaveScore = this.add.sprite(
       this.game.config.width * .5,
       this.game.config.height * .4,
-      'sprBtnRestart'
+      'sprBtnSave'
     );
     this.btnSaveScore.setInteractive();
     
     this.btnSaveScore.on('pointerover', () => {
-      this.btnSaveScore.setTexture('');
+      this.btnSaveScore.setTexture('sprBtnSaveHover');
       this.sfx.btnOver.play();
     }, this);
 
     this.btnSaveScore.on('pointerout', () => {
-      this.btnSaveScore.setTexture('');
+      this.btnSaveScore.setTexture('sprBtnSave');
     });
     
     this.btnSaveScore.on('pointerdown', () => {
-      this.btnSaveScore.setTexture('');
+      this.btnSaveScore.setTexture('sprBtnSaveDown');
       this.sfx.btnDown.play();
     }, this);
 
     this.btnSaveScore.on('pointerup', () => {
-      this.btnSaveScore.setTexture('');
+      this.btnSaveScore.setTexture('sprBtnSave');
       try {
         axios.post(`https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameId}/scores/`, {
 
