@@ -8,8 +8,12 @@ import ScenePause from './scenes/ScenePause';
 const config = {
   type: Phaser.WEBGL,
   width: 840,
+  parent: 'divId',
   height: 560,
   backgroundColor: 'black',
+  dom: {
+    createContainer: true,
+  },
   physics: {
     default: 'arcade',
     arcade: {
