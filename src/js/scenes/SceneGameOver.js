@@ -1,4 +1,7 @@
+import axios from 'axios';
 import { ScrollingBackground } from './utils/ScrollingBackground';
+
+const gameId = '7LB4DVqRjgyTZD1s38uU'
 export default class SceneGameOver extends Phaser.Scene {
   constructor() {
     super({
@@ -36,6 +39,41 @@ export default class SceneGameOver extends Phaser.Scene {
       btnOver: this.sound.add('sndBtnOver'),
       btnDown: this.sound.add('sndBtnDown'),
     };
+
+    this.inputName = document.createElement('input');
+
+    this.btnSaveScore = this.add.sprite(
+      this.game.config.width * .5,
+      this.game.config.height * .4,
+      'sprBtnRestart'
+    );
+    this.btnSaveScore.setInteractive();
+    
+    this.btnSaveScore.on('pointerover', () => {
+      this.btnSaveScore.setTexture('');
+      this.sfx.btnOver.play();
+    }, this);
+
+    this.btnSaveScore.on('pointerout', () => {
+      this.btnSaveScore.setTexture('');
+    });
+    
+    this.btnSaveScore.on('pointerdown', () => {
+      this.btnSaveScore.setTexture('');
+      this.sfx.btnDown.play();
+    }, this);
+
+    this.btnSaveScore.on('pointerup', () => {
+      this.btnSaveScore.setTexture('');
+      try {
+        axios.post(`https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameId}/scores/`, {
+
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    }, this);
+
 
     this.btnRestart = this.add.sprite(
       this.game.config.width * 0.5,
