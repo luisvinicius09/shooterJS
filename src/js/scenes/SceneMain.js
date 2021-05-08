@@ -51,6 +51,7 @@ export default class SceneMain extends Phaser.Scene {
     this.keyLeft = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT);
     this.keyRight = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.RIGHT);
     this.keySpace = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
+    this.keyEsc = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
 
     this.anims.create({
       key: 'sprPlayer',
@@ -185,7 +186,7 @@ export default class SceneMain extends Phaser.Scene {
         player.onDeath()
         laser.destroy();
       }
-    })
+    });
   };
 
   update() {
@@ -215,6 +216,12 @@ export default class SceneMain extends Phaser.Scene {
           this.player.setData('isShooting', false);
         }
     }
+
+    if (this.keyEsc.isDown) {
+      this.scene.launch('ScenePause');
+      this.scene.pause();
+    }
+
      for (let i = 0; i < this.enemies.getChildren().length; i += 1) {
       let enemy = this.enemies.getChildren()[i];
 
