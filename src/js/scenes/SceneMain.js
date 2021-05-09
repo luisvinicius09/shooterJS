@@ -175,7 +175,7 @@ export default class SceneMain extends Phaser.Scene {
     this.physics.add.overlap(this.player, this.enemies, (player, enemy) => {
       if (!player.getData('isDead') && !enemy.getData('isDead')) {
         player.explode(false);
-        player.onDeath()
+        player.onDeath(score);
         enemy.explode(true);
       }
     });
@@ -183,7 +183,7 @@ export default class SceneMain extends Phaser.Scene {
     this.physics.add.overlap(this.player, this.enemyLasers, (player, laser) => {
       if (!player.getData('isDead') && !laser.getData('isDead')) {
         player.explode(false);
-        player.onDeath()
+        player.onDeath(score);
         laser.destroy();
       }
     });
