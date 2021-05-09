@@ -7,7 +7,12 @@ export default class SceneGameOver extends Phaser.Scene {
     super({
       key: 'SceneGameOver',
     });
+    this.score;
   };
+
+  init(data) {
+    this.score = data.score;
+  }
 
   preload() {
     this.load.image('sprBtnSave', './img/buttons/sprBtnSave.png');
@@ -41,6 +46,8 @@ export default class SceneGameOver extends Phaser.Scene {
     };
 
     const input = document.createElement('input');
+    input.id = 'nameInput';
+
     const element = this.add.dom(this.game.config.width * .5, this.game.config.height * .4, input);
 
     this.btnSaveScore = this.add.sprite(
@@ -67,9 +74,14 @@ export default class SceneGameOver extends Phaser.Scene {
     this.btnSaveScore.on('pointerup', () => {
       this.btnSaveScore.setTexture('sprBtnSave');
       try {
+        const nameValue = document.getElementById('nameInput');
         axios.post(`https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameId}/scores/`, {
-
-        });
+          user: nameValue.value,
+          score: this.score
+        })
+        .then(() => {
+          this.scene.start('SceneMainMenu');
+        })
       } catch (err) {
         console.log(err);
       }
