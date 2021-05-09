@@ -35,11 +35,11 @@ export class Entity extends Phaser.GameObjects.Sprite {
     this.setData('isDead', true);
   };
 
-  onDeath() {
+  onDeath(data) {
     this.scene.time.addEvent({
       delay: 1,
       callback: () => {
-        this.scene.scene.start('SceneGameOver');
+        this.scene.scene.start('SceneGameOver', { score: data });
       },
       callBackScope: true,
       loop: false,
