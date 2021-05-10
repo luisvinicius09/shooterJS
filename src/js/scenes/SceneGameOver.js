@@ -48,7 +48,7 @@ export default class SceneGameOver extends Phaser.Scene {
     const input = document.createElement('input');
     input.id = 'nameInput';
 
-    const element = this.add.dom(this.game.config.width * .5, this.game.config.height * .4, input);
+    this.add.dom(this.game.config.width * .5, this.game.config.height * .4, input);
 
     this.btnSaveScore = this.add.sprite(
       this.game.config.width * .5,
@@ -75,15 +75,27 @@ export default class SceneGameOver extends Phaser.Scene {
       this.btnSaveScore.setTexture('sprBtnSave');
       try {
         const nameValue = document.getElementById('nameInput');
-        axios.post(`https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameId}/scores/`, {
-          user: nameValue.value,
-          score: this.score
-        })
-        .then(() => {
-          this.scene.start('SceneMainMenu');
-        })
+        if (nameValue.value.length == 0) {
+          this.warning = this.add.text(this.game.config.width * .5, this.game.config.height * 0.35, "You can't save your score without a name!");
+          this.warning.setOrigin(.5);
+        } else if (nameValue.value.length > 10) {
+          this.warning.destroy();
+          this.warning = this.add.text(this.game.config.width * 0.5, this.game.config.height * .35, 'Your name is too long');
+          this.warning.setOrigin(0.5);
+        } else {
+          axios.post(`https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameId}/scores/`, {
+            user: nameValue.value,
+            score: this.score
+          });
+          if (this.warning || this.error) {
+            this.warning.destroy();
+            this.error.destroy();
+          }
+        }
       } catch (err) {
         console.log(err);
+        this.error = this.add.text(this.game.config.width * .5, this.game.config.height * .35, 'Something went wrong!')
+        this.error.setOrigin(.5);
       }
     }, this);
 
