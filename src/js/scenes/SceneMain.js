@@ -257,7 +257,6 @@ export default class SceneMain extends Phaser.Scene {
           }
       }
     }
-
   };
 
   getEnemiesByType(type) {

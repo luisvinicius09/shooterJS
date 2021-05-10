@@ -2,9 +2,9 @@ const gameId = '7LB4DVqRjgyTZD1s38uU'
 
 const axios = require('axios');
 
-const COLOR_PRIMARY = 0x4e342e;
-const COLOR_LIGHT = 0x7b5e57;
-const COLOR_DARK = 0x260e04;
+const COLOR_PRIMARY = 0x8ca0ab;
+const COLOR_LIGHT = 0x9badb7;
+const COLOR_DARK = 0x7d94a1;
 export default class SceneLeaderboard extends Phaser.Scene {
   constructor() {
     super({
@@ -42,7 +42,6 @@ export default class SceneLeaderboard extends Phaser.Scene {
       align: 'center',
     });
     this.title.setOrigin(.5);
-
 
     this.btnMenu = this.add.sprite(
       this.game.config.width * .5,
@@ -113,21 +112,6 @@ export default class SceneLeaderboard extends Phaser.Scene {
     axios.get(`https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameId}/scores/`)
     .then((res) => {
       tabs.getElement('panel').setItems(res.data.result).scrollToTop();
-    })
-    
-    // tabs.getElement('panel')
-    //   .on('cell.click', (cellContainer, cellIndex) => {
-    //     this.print.text += cellIndex + ': ' + cellContainer.text + '\n';
-    //   }, this)
-    //   .on('cell.over', (cellContainer, cellIndex) => {
-    //     cellContainer.getElement('background')
-    //       .setStrokeStyle(2, COLOR_LIGHT)
-    //       .setDepth(1);
-    //   }, this)
-    //   .on('cell.out', (cellContainer, cellIndex) => {
-    //     cellContainer.getElement('background')
-    //       .setStrokeStyle(2, COLOR_DARK)
-    //       .setDepth(0);
-    //   }, this);
+    });
   };
 };
