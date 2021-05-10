@@ -11,9 +11,6 @@ const config = {
   parent: 'divId',
   height: 560,
   backgroundColor: 'black',
-  dom: {
-    createContainer: true,
-  },
   physics: {
     default: 'arcade',
     arcade: {
