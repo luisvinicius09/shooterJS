@@ -47,6 +47,7 @@ export default class SceneGameOver extends Phaser.Scene {
 
     const input = document.createElement('input');
     input.id = 'nameInput';
+    input.autocomplete = 'off';
 
     this.add.dom(this.game.config.width * .5, this.game.config.height * .4, input);
 
@@ -86,9 +87,16 @@ export default class SceneGameOver extends Phaser.Scene {
           axios.post(`https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameId}/scores/`, {
             user: nameValue.value,
             score: this.score
+          })
+          .then((res) => {
+            this.success = this.add.text(this.game.config.width * .5, this.game.config.heigth * .35, 'Your score was saved!');
+            this.success.setOrigin(.5);
+            console.log(res)
           });
           if (this.warning || this.error) {
             this.warning.destroy();
+          }
+          if (this.error) {
             this.error.destroy();
           }
         }
