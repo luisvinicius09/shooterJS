@@ -1,15 +1,16 @@
-let scores;
-
 const gameId = '7LB4DVqRjgyTZD1s38uU'
 
 const axios = require('axios');
 
+const COLOR_PRIMARY = 0x4e342e;
+const COLOR_LIGHT = 0x7b5e57;
+const COLOR_DARK = 0x260e04;
 export default class SceneLeaderboard extends Phaser.Scene {
   constructor() {
     super({
       key: 'SceneLeaderboard',
     });
-    this.scores = [];
+    this.scores;
   };
 
   preload() {
@@ -19,17 +20,15 @@ export default class SceneLeaderboard extends Phaser.Scene {
     
     this.load.audio('sndBtnOver', './audio/buttons/sndBtnOver.wav');
     this.load.audio('sndBtnDown', './audio/buttons/sndBtnDown.wav');
+
+    this.load.scenePlugin({
+      key: 'rexuiplugin',
+      url: 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js',
+      sceneKey: 'rexUI'
+    });
   };
 
-  retrieveData() {
-    axios.get(`https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameId}/scores/`)
-    .then((res) => {
-      this.scores = res.data.result;
-    })
-  }
-
   create() {
-    this.retrieveData();
     this.sfx = {
       btnOver: this.sound.add('sndBtnOver'),
       btnDown: this.sound.add('sndBtnDown'),
@@ -70,13 +69,65 @@ export default class SceneLeaderboard extends Phaser.Scene {
       this.btnMenu.setTexture('sprBtnMenu');
       this.scene.start('SceneMainMenu');
     });
+      
+    let tabs = this.rexUI.add.tabs({
+      x: this.game.config.width * .5,
+      y: this.game.config.height * .6,
+      panel: this.rexUI.add.gridTable({
+        background: this.rexUI.add.roundRectangle(0, 0, 20, 10, 10, COLOR_PRIMARY),
+        table: {
+          width: 301,
+          height: 370,
+          cellWidth: 150,
+          cellHeight: 60,
+          columns: 2,
+          mask: {
+            padding: 2,
+          },
+        },
+        slider: {
+          track: this.rexUI.add.roundRectangle(0, 0, 0, 0, 10, COLOR_DARK),
+          thumb: this.rexUI.add.roundRectangle(0, 0, 0, 0, 10, COLOR_LIGHT),
+        },
+        createCellContainerCallback: (cell) => {
+          var scene = cell.scene,
+              width = cell.width,
+              height = cell.height,
+              item = cell.item,
+              index = cell.index;
+          return scene.rexUI.add.label({
+            width: width,
+            height: height,
+            background: scene.rexUI.add.roundRectangle(0, 0, 20, 20, 0).setStrokeStyle(2, COLOR_DARK),
+            icon: scene.add.text(0, 0, item.user),
+            text: scene.add.text(0, 0, item.score),
+            space: {
+                icon: 10,
+                left: 15
+            }
+          });
+        },
+      }),
+    }).layout();
 
-    for (let i = 0; i < this.scores.length; i += 1) {
-      if (this.scores.length === 0) {
-
-      }
-      this.add.text(this.game.config.width * .5, 200 + 30 * i, `${this.scores[i]}`);
-    };
-
+    axios.get(`https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameId}/scores/`)
+    .then((res) => {
+      tabs.getElement('panel').setItems(res.data.result).scrollToTop();
+    })
+    
+    // tabs.getElement('panel')
+    //   .on('cell.click', (cellContainer, cellIndex) => {
+    //     this.print.text += cellIndex + ': ' + cellContainer.text + '\n';
+    //   }, this)
+    //   .on('cell.over', (cellContainer, cellIndex) => {
+    //     cellContainer.getElement('background')
+    //       .setStrokeStyle(2, COLOR_LIGHT)
+    //       .setDepth(1);
+    //   }, this)
+    //   .on('cell.out', (cellContainer, cellIndex) => {
+    //     cellContainer.getElement('background')
+    //       .setStrokeStyle(2, COLOR_DARK)
+    //       .setDepth(0);
+    //   }, this);
   };
 };
