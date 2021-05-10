@@ -3,11 +3,11 @@
 </p>
   
 <h1 align="center">
-  Project Name
+  ShooterJS
 </h1>
 
 <h4 align="center">
-  One paragraph statement about the project.
+  This is a simple space shooter built with Phaser.js.
 </h4>
 
 <p align="center">
@@ -18,9 +18,9 @@ Additional description about the project and its features.
 
 ## Built With
 
-- Major languages
-- Frameworks
-- Technologies used
+- Phaser.js
+- HTML & CSS
+- Javascript
 
 ## Live Demo
 
@@ -29,13 +29,15 @@ Additional description about the project and its features.
 
 ## Getting Started
 
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
+**This is how you set up your project locally.**
 
 
 To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
+
+- Code editor.
+- Node.js installed.
 
 ### Setup
 
@@ -52,7 +54,7 @@ To get a local copy up and running follow these simple example steps.
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](issues/).
+Feel free to check the [issues page](https://github.com/luisvinicius09/shooterJS/issues).
 
 ## Show your support
 
@@ -77,25 +79,8 @@ This project is [MIT](lic.url) licensed.
 </p>
 
 <p align="center">
-  GitHub: <a href="https://github.com/githubhandle">@githubhandle</a>
+  GitHub: <a href="https://github.com/luisvinicius09">@luisvinicius09</a>
 </p>
 <p align="center">
-  Twitter: <a href="https://twitter.com/twitterhandle">@twitterhandle</a>  
-</p>
-<p align="center">
-  LinkedIn: <a href="https://linkedin.com/linkedinhandle">LinkedIn</a>
-</p>
-
-<p align="center">
-  <strong>Author2 👤</strong>  
-</p>
-
-<p align="center">
-  GitHub: <a href="https://github.com/githubhandle">@githubhandle</a>
-</p>
-<p align="center">
-  Twitter: <a href="https://twitter.com/twitterhandle">@twitterhandle</a>  
-</p>
-<p align="center">
-  LinkedIn: <a href="https://linkedin.com/linkedinhandle">LinkedIn</a>
+  LinkedIn: <a href="https://www.linkedin.com/in/luis-vinicius/">LinkedIn</a>
 </p>
