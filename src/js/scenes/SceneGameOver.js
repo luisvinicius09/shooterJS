@@ -7,7 +7,7 @@ export default class SceneGameOver extends Phaser.Scene {
     super({
       key: 'SceneGameOver',
     });
-    this.score;
+    this.score = 0;
   };
 
   init(data) {
@@ -48,8 +48,12 @@ export default class SceneGameOver extends Phaser.Scene {
     const input = document.createElement('input');
     input.id = 'nameInput';
     input.autocomplete = 'off';
+    input.placeholder = 'Type your name here'
 
     this.add.dom(this.game.config.width * .5, this.game.config.height * .4, input);
+
+    this.subInput = this.add.text(this.game.config.width * .5, this.game.config.height * .45, "(OPTIONAL)");
+    this.subInput.setOrigin(.5);
 
     this.btnSaveScore = this.add.sprite(
       this.game.config.width * .5,
@@ -77,32 +81,43 @@ export default class SceneGameOver extends Phaser.Scene {
       try {
         const nameValue = document.getElementById('nameInput');
         if (nameValue.value.length == 0) {
-          this.warning = this.add.text(this.game.config.width * .5, this.game.config.height * 0.35, "You can't save your score without a name!");
-          this.warning.setOrigin(.5);
-        } else if (nameValue.value.length > 10) {
-          this.warning.destroy();
-          this.warning = this.add.text(this.game.config.width * 0.5, this.game.config.height * .35, 'Your name is too long');
-          this.warning.setOrigin(0.5);
-        } else {
-          axios.post(`https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameId}/scores/`, {
-            user: nameValue.value,
-            score: this.score
-          })
-          .then((res) => {
-            this.success = this.add.text(this.game.config.width * .5, this.game.config.heigth * .35, 'Your score was saved!');
-            this.success.setOrigin(.5);
-            console.log(res)
-          });
-          if (this.warning || this.error) {
+          if (this.warning) {
             this.warning.destroy();
           }
-          if (this.error) {
-            this.error.destroy();
+          this.warning = this.add.text(this.game.config.width * .5, this.game.config.height * .35, "You can't save your score without a name!");
+          this.warning.setOrigin(.5);
+        } else if (nameValue.value.length > 10) {
+          if (this.warning) {
+            this.warning.destroy();
           }
+          this.warning = this.add.text(this.game.config.width * .5, this.game.config.height * .35, 'Your name is too long');
+          this.warning.setOrigin(.5);
+        } else if (this.score == 0) {
+          if(this.warning) {
+            this.warning.destroy();
+          }
+          this.warning = this.add.text(this.game.config.width * .5, this.game.config.height * .35, "You have to score at least 10 points to save your score.");
+          this.warning.setOrigin(.5);
+        }
+        axios.post(`https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameId}/scores/`, {
+          user: nameValue.value,
+          score: this.score
+        }).then(() => {
+          this.success = this.scene.scene.add.text(this.game.config.width * .5, this.game.config.height * .35, 'Your score was saved!');
+          this.success.setOrigin(.5);
+        });
+        if (this.warning || this.error) {
+          this.warning.destroy();
+        }
+        if (this.error) {
+          this.error.destroy();
+        }
+        if (this.success) {
+          this.success.destroy();
         }
       } catch (err) {
         console.log(err);
-        this.error = this.add.text(this.game.config.width * .5, this.game.config.height * .35, 'Something went wrong!')
+        this.error = this.add.text(this.game.config.width * .5, this.game.config.height * .35, 'Something went wrong!');
         this.error.setOrigin(.5);
       }
     }, this);
