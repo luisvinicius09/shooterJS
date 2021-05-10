@@ -14,3 +14,7 @@ canvas {
   margin: auto;
   display: flex;
 }
+
+input {
+  text-align: center;
+}
