@@ -25,10 +25,9 @@ const config = {
     },
   },
   scene: [
-    ScenePreloader,
-    SceneBoot,
-    SceneOptions,
-    SceneCredits,
+    // ScenePreloader,
+    // SceneBoot,
+    // SceneOptions,
     SceneMainMenu,
     SceneMain,
     SceneLeaderboard,
