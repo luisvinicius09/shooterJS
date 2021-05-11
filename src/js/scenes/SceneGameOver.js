@@ -42,8 +42,8 @@ export default class SceneGameOver extends Phaser.Scene {
     this.title.setOrigin(.5);
 
     this.sfx = {
-      btnOver: this.sound.add('sndBtnOver'),
-      btnDown: this.sound.add('sndBtnDown'),
+      btnOver: this.sound.add('sndBtnOver', { volume: 0.3 }),
+      btnDown: this.sound.add('sndBtnDown', { volume: 0.3 }),
     };
 
     const input = document.createElement('input');
@@ -126,7 +126,7 @@ export default class SceneGameOver extends Phaser.Scene {
 
     this.btnRestart = this.add.sprite(
       this.game.config.width * .5,
-      this.game.config.height * .6,
+      this.game.config.height * .65,
       'sprBtnRestart',
     );
 
@@ -153,7 +153,7 @@ export default class SceneGameOver extends Phaser.Scene {
 
     this.btnLeaderboard = this.add.sprite(
       this.game.config.width * .5,
-      this.game.config.height * .7,
+      this.game.config.height * .75,
       'sprBtnLeaderboard'
     )
     this.btnLeaderboard.setInteractive();
