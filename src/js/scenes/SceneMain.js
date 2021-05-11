@@ -18,9 +18,9 @@ export default class SceneMain extends Phaser.Scene {
 
     this.load.image('sprLaser1', './img/playerLaser1.png');
 
-    this.load.spritesheet('sprExplosion', './img/explosion.png', {
-      frameWidth: 32,
-      frameHeight: 32,
+    this.load.spritesheet('sprExplosion', './img/explosion1.png', {
+      frameWidth: 50,
+      frameHeight: 50,
     });
 
     this.load.spritesheet('sprEnemyShip0', './img/enemyShip0.png', {
@@ -120,7 +120,6 @@ export default class SceneMain extends Phaser.Scene {
             this.game.config.width,
             Phaser.Math.Between(0, this.game.config.height),
           );
-          enemy.setScale(.4);
           enemy.setAngle(90);
         } else if (Phaser.Math.Between(0, 10) >= 5) {
           if (this.getEnemiesByType('ChaserTrap').length < 5) {
@@ -137,7 +136,6 @@ export default class SceneMain extends Phaser.Scene {
             this.game.config.width,
             Phaser.Math.Between(0, this.game.config.height)
           );
-          enemy.setScale(0.8);
           enemy.setAngle(90);
         };
 
