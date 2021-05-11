@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
-import PreloaderScene from './scenes/BootScene';
-import OptionsScene from './scenes/OptionsScene';
+import ScenePreloader from './scenes/ScenePreloader';
+import SceneBoot from './scenes/SceneBoot';
+import SceneOptions from './scenes/SceneOptions';
 import SceneCredits from './scenes/SceneCredits';
 import SceneMainMenu from './scenes/SceneMainMenu';
 import SceneMain from './scenes/SceneMain';
@@ -24,8 +25,9 @@ const config = {
     },
   },
   scene: [
-    PreloaderScene,
-    OptionsScene,
+    ScenePreloader,
+    SceneBoot,
+    SceneOptions,
     SceneCredits,
     SceneMainMenu,
     SceneMain,
