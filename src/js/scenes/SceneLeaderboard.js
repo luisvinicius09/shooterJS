@@ -30,8 +30,8 @@ export default class SceneLeaderboard extends Phaser.Scene {
 
   create() {
     this.sfx = {
-      btnOver: this.sound.add('sndBtnOver'),
-      btnDown: this.sound.add('sndBtnDown'),
+      btnOver: this.sound.add('sndBtnOver', { volume: 0.3 }),
+      btnDown: this.sound.add('sndBtnDown', { volume: 0.3 }),
     };
 
     this.title = this.add.text(this.game.config.width * .5, 100, 'LEADERBOARD', {

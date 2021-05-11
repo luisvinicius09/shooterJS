@@ -21,8 +21,8 @@ export default class ScenePause extends Phaser.Scene {
     this.keyEsc = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
 
     this.sfx = {
-      btnOver: this.sound.add('sndBtnOver'),
-      btnDown: this.sound.add('sndBtnDown'),
+      btnOver: this.sound.add('sndBtnOver', { volume: 0.3 }),
+      btnDown: this.sound.add('sndBtnDown', { volume: 0.3 }),
     };
 
     this.title = this.add.text(this.game.config.width * .5, 128, 'PAUSED', {
