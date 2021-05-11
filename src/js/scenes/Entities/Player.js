@@ -3,7 +3,7 @@ import { Entity } from "./Entity";
 export class Player extends Entity {
   constructor(scene, x, y, key) {
     super(scene, x, y, key, 'Player');
-    this.setData('speed', 200);
+    this.setData('speed', 150);
     this.play('sprPlayer');
     this.setData('isShooting', false);
     this.setData('timerShootDelay', 10);
