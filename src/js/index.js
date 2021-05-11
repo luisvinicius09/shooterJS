@@ -12,7 +12,7 @@ const config = {
   height: 560,
   dom: {
     createContainer: true
-},
+  },
   backgroundColor: 'black',
   physics: {
     default: 'arcade',

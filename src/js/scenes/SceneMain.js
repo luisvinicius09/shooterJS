@@ -15,7 +15,7 @@ export default class SceneMain extends Phaser.Scene {
       frameWidth: 478,
       frameHeight: 348,
     });
-    
+
     this.load.image('sprLaser1', './img/playerLaser1.png');
 
     this.load.spritesheet('sprExplosion', './img/explosion.png', {
@@ -39,7 +39,7 @@ export default class SceneMain extends Phaser.Scene {
 
     this.load.audio('sndLaser', './audio/laserfire02.ogg');
     this.load.audio('sndExplosion', './audio/explosion1.wav');
-    
+
     this.load.image('sprBg0', './img/background.png');
     this.load.image('sprBg1', './img/sprBg1.png');
     this.load.image('sprBg2', './img/sprBg2.png');
@@ -81,14 +81,12 @@ export default class SceneMain extends Phaser.Scene {
       repeat: 0,
     });
 
-
     this.sfx = {
       explosions: [
         this.sound.add('sndExplosion', { volume: 0.5 }),
       ],
       laser: this.sound.add('sndLaser', { volume: 0.2 }),
     };
-
 
     this.backgrounds = [];
     for (let i = 0; i < 5; i += 1) {
@@ -111,7 +109,6 @@ export default class SceneMain extends Phaser.Scene {
     this.playerLasers = this.add.group();
     this.enemies = this.add.group();
     this.enemyLasers = this.add.group();
-
 
     this.time.addEvent({
       delay: 1000,
@@ -227,7 +224,7 @@ export default class SceneMain extends Phaser.Scene {
 
       enemy.update();
 
-      if (enemy.x < -enemy.displayWidth * 4||
+      if (enemy.x < -enemy.displayWidth * 4 ||
           enemy.x > this.game.config.width + enemy.displayWidth ||
           enemy.y < -enemy.displayHeight ||
           enemy.y > this.game.config.height + enemy.displayHeight
@@ -236,7 +233,6 @@ export default class SceneMain extends Phaser.Scene {
             if (enemy.onDestroy !== undefined) {
               enemy.onDestroy();
             }
-
             enemy.destroy();
           }
       };
@@ -244,9 +240,7 @@ export default class SceneMain extends Phaser.Scene {
 
     for (let i = 0; i < this.enemyLasers.getChildren().length; i += 1) {
       let laser = this.enemyLasers.getChildren()[i];
-
       laser.update();
-
       if(laser.x < -laser.displayWidth ||
          laser.x > this.game.config.width + laser.displayWidth ||
          laser.y < -laser.displayHeight ||

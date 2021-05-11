@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { ScrollingBackground } from './utils/ScrollingBackground';
 
-const gameId = '7LB4DVqRjgyTZD1s38uU'
+const gameId = '7LB4DVqRjgyTZD1s38uU';
+
 export default class SceneGameOver extends Phaser.Scene {
   constructor() {
     super({
