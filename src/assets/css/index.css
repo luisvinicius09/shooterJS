@@ -8,13 +8,10 @@ div {
 
 input {
   pointer-events: all;
+  text-align: center;
 }
 
 canvas {
   margin: auto;
   display: flex;
-}
-
-input {
-  text-align: center;
 }
