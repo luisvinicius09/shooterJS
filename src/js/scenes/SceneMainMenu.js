@@ -15,7 +15,7 @@ export default class SceneMainMenu extends Phaser.Scene {
 
     this.btnPlay = this.add.sprite(
       this.game.config.width * 0.5,
-      this.game.config.height * 0.5,
+      this.game.config.height * 0.4,
       'sprBtnPlay',
     );
     this.btnPlay.setInteractive();
@@ -23,7 +23,7 @@ export default class SceneMainMenu extends Phaser.Scene {
     this.btnPlay.on('pointerover', () => {
       this.btnPlay.setTexture('sprBtnPlayHover');
       this.sfx.btnOver.play();
-    }, this);
+    });
 
     this.btnPlay.on('pointerout', () => {
       this.btnPlay.setTexture('sprBtnPlay');
@@ -32,12 +32,12 @@ export default class SceneMainMenu extends Phaser.Scene {
     this.btnPlay.on('pointerdown', () => {
       this.btnPlay.setTexture('sprBtnPlayDown');
       this.sfx.btnDown.play();      
-    }, this);
+    });
 
     this.btnPlay.on('pointerup', () => {
       this.btnPlay.setTexture('sprBtnPlay');
       this.scene.start('SceneMain');
-    }, this);
+    });
 
     this.title = this.add.text(this.game.config.width * .5, 128, 'SHOOTERJS', {
       fontFamily: 'monospace',
@@ -59,7 +59,7 @@ export default class SceneMainMenu extends Phaser.Scene {
 
     this.btnLeaderboard = this.add.sprite(
       this.game.config.width * 0.5,
-      this.game.config.height * 0.6,
+      this.game.config.height * 0.5,
       'sprBtnLeaderboard'
     )
     this.btnLeaderboard.setInteractive();
@@ -67,21 +67,56 @@ export default class SceneMainMenu extends Phaser.Scene {
     this.btnLeaderboard.on('pointerover', () => {
       this.btnLeaderboard.setTexture('sprBtnLeaderboardHover');
       this.sfx.btnOver.play();
-    }, this);
+    });
 
     this.btnLeaderboard.on('pointerout', () => {
       this.btnLeaderboard.setTexture('sprBtnLeaderboard');
-    }, this);
+    });
 
     this.btnLeaderboard.on('pointerdown', () => {
       this.btnLeaderboard.setTexture('sprBtnLeaderboardDown');
       this.sfx.btnDown.play();
-    }, this)
+    });
 
     this.btnLeaderboard.on('pointerup', () => {
       this.scene.start('SceneLeaderboard');
-    }, this)
+    });
+
+
+    this.btnOptions = this.add.sprite(
+      this.game.config.width *.5,
+      this.game.config.height *.6,
+    );
+
+
+    this.btnCredits = this.add.sprite(
+      this.game.config.width * .5,
+      this.game.config.height * .6,
+      'sprBtnCredits'
+    );
+    this.btnCredits.setInteractive();
+
+    this.btnCredits.on('pointerover', () => {
+      this.btnCredits.setTexture('sprBtnCreditsHover');
+      this.sfx.btnOver.play();
+    });
+
+    this.btnCredits.on('pointerout', () => {
+      this.btnCredits.setTexture('sprBtnCredits');
+    });
+
+    this.btnCredits.on('pointerdown', () => {
+      this.btnCredits.setTexture('sprBtnCreditsDown');
+      this.sfx.btnDown.play();
+    });
+
+    this.btnCredits.on('pointerup', () => {
+      this.scene.start('SceneCredits');
+    });
+
+
   };
+
 
   update() {
     for (let i = 0; i < this.backgrounds.length; i += 1) {
