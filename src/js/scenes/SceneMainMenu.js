@@ -89,9 +89,35 @@ export default class SceneMainMenu extends Phaser.Scene {
     );
 
 
-    this.btnCredits = this.add.sprite(
+    this.btnControls = this.add.sprite(
       this.game.config.width * .5,
       this.game.config.height * .6,
+      'sprBtnControls'
+    );
+    this.btnControls.setInteractive();
+
+    this.btnControls.on('pointerover', () => {
+      this.btnControls.setTexture('sprBtnControlsHover');
+      this.sfx.btnOver.play();
+    });
+
+    this.btnControls.on('pointerout', () => {
+      this.btnControls.setTexture('sprBtnControls');
+    });
+
+    this.btnControls.on('pointerdown', () => {
+      this.btnControls.setTexture('sprBtnControlsDown');
+      this.sfx.btnDown.play();
+    });
+
+    this.btnControls.on('pointerup', () => {
+      this.scene.start('Controls');
+    });
+
+
+    this.btnCredits = this.add.sprite(
+      this.game.config.width * .5,
+      this.game.config.height * .7,
       'sprBtnCredits'
     );
     this.btnCredits.setInteractive();
@@ -111,7 +137,7 @@ export default class SceneMainMenu extends Phaser.Scene {
     });
 
     this.btnCredits.on('pointerup', () => {
-      this.scene.start('SceneCredits');
+      this.scene.start('Credits');
     });
 
 
