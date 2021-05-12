@@ -120,16 +120,16 @@ export default class ScenePreloader extends Phaser.Scene {
     this.load.image('sprBtnLeaderboardHover', './img/buttons/sprBtnLeaderboardHover.png');
     this.load.image('sprBtnLeaderboardDown', './img/buttons/sprBtnLeaderboardDown.png');
 
-    this.load.image('sprBg0', './img/background.png');
-    this.load.image('sprBg1', './img/sprBg1.png');
-    this.load.image('sprBg2', './img/sprBg2.png');
-
     this.load.image('sprBtnSave', './img/buttons/sprBtnSave.png');
     this.load.image('sprBtnSaveHover', './img/buttons/sprBtnSaveHover.png');
     this.load.image('sprBtnSaveDown', './img/buttons/sprBtnSaveDown.png');
     this.load.image('sprBtnRestart', './img/buttons/sprBtnRestart.png');
     this.load.image('sprBtnRestartHover', './img/buttons/sprBtnRestartHover.png');
     this.load.image('sprBtnRestartDown', './img/buttons/sprBtnRestartDown.png');
+
+    this.load.image('sprBtnCredits', './img/buttons/sprBtnCredits.png');
+    this.load.image('sprBtnCreditsHover', './img/buttons/sprBtnCreditsHover.png');
+    this.load.image('sprBtnCreditsDown', './img/buttons/sprBtnCreditsDown.png');
 
     this.load.audio('sndBtnOver', './audio/buttons/sndBtnOver.wav');
     this.load.audio('sndBtnDown', './audio/buttons/sndBtnDown.wav');
