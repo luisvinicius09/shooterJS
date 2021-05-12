@@ -1,4 +1,4 @@
-const axios = require('axios');
+import axios from 'axios';
 
 const COLOR_PRIMARY = 0x8ca0ab;
 const COLOR_LIGHT = 0x9badb7;
@@ -11,7 +11,7 @@ export default class SceneLeaderboard extends Phaser.Scene {
       key: 'SceneLeaderboard',
     });
     this.scores;
-  };
+  }
 
   preload() {
     this.load.scenePlugin({
@@ -19,7 +19,7 @@ export default class SceneLeaderboard extends Phaser.Scene {
       url: 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js',
       sceneKey: 'rexUI',
     });
-  };
+  }
 
   create() {
     this.sfx = {
@@ -27,19 +27,19 @@ export default class SceneLeaderboard extends Phaser.Scene {
       btnDown: this.sound.add('sndBtnDown', { volume: 0.3 }),
     };
 
-    this.title = this.add.text(this.game.config.width * .5, 100, 'LEADERBOARD', {
+    this.title = this.add.text(this.game.config.width * 0.5, 100, 'LEADERBOARD', {
       fontFamily: 'monospace',
       fontSize: 60,
       fontStyle: 'bold',
       color: '#fff',
       align: 'center',
     });
-    this.title.setOrigin(.5);
+    this.title.setOrigin(0.5);
 
     this.btnMenu = this.add.sprite(
-      this.game.config.width * .5,
+      this.game.config.width * 0.5,
       this.game.config.height * 0.1,
-      'sprBtnMenu'
+      'sprBtnMenu',
     );
     this.btnMenu.setInteractive();
 
@@ -62,9 +62,9 @@ export default class SceneLeaderboard extends Phaser.Scene {
       this.scene.start('SceneMainMenu');
     });
 
-    let tabs = this.rexUI.add.tabs({
-      x: this.game.config.width * .5,
-      y: this.game.config.height * .6,
+    const tabs = this.rexUI.add.tabs({
+      x: this.game.config.width * 0.5,
+      y: this.game.config.height * 0.6,
       panel: this.rexUI.add.gridTable({
         background: this.rexUI.add.roundRectangle(0, 0, 20, 10, 10, COLOR_PRIMARY),
         table: {
@@ -82,37 +82,32 @@ export default class SceneLeaderboard extends Phaser.Scene {
           thumb: this.rexUI.add.roundRectangle(0, 0, 0, 0, 10, COLOR_LIGHT),
         },
         createCellContainerCallback: (cell) => {
-          var scene = cell.scene,
-              width = cell.width,
-              height = cell.height,
-              item = cell.item,
-              index = cell.index;
+          const { scene, width, height, item } = cell;
           return scene.rexUI.add.label({
-            width: width,
-            height: height,
-            background: scene.rexUI.add.roundRectangle(0, 0, 20, 20, 0).setStrokeStyle(2, COLOR_DARK),
+            width,
+            height,
+            background: scene.rexUI.add.roundRectangle(0, 0, 20, 20, 0)
+            .setStrokeStyle(2, COLOR_DARK),
             icon: scene.add.text(0, 0, item.user),
             text: scene.add.text(0, 0, item.score),
             space: {
-                icon: 10,
-                left: 15
-            }
+              icon: 10,
+              left: 15,
+            },
           });
         },
       }),
     }).layout();
 
-    this.loading = this.add.text(this.game.config.width * .5, this.game.config.height * .5, 'Loading...')
-    this.loading.setOrigin(.5);
+    this.loading = this.add.text(this.game.config.width * 0.5, this.game.config.height * 0.5, 'Loading...')
+    this.loading.setOrigin(0.5);
 
     axios.get(`https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameId}/scores/`)
-    .then((res) => {
-      this.loading.destroy();
-      const response = res.data.result;
-      response.sort((a, b) => {
-        return b.score - a.score;
-      })
-      tabs.getElement('panel').setItems(response).scrollToTop();
-    });
-  };
-};
+  .then((res) => {
+    this.loading.destroy();
+    const response = res.data.result;
+    response.sort((a, b) => b.score - a.score);
+    tabs.getElement('panel').setItems(response).scrollToTop();
+  });
+  }
+}

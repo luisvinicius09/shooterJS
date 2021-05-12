@@ -1,4 +1,4 @@
-export class Entity extends Phaser.GameObjects.Sprite {
+export default class Entity extends Phaser.GameObjects.Sprite {
   constructor(scene, x, y, key, type) {
     super(scene, x, y, key);
     this.scene = scene;
@@ -6,13 +6,13 @@ export class Entity extends Phaser.GameObjects.Sprite {
     this.scene.physics.world.enableBody(this, 0);
     this.setData('type', type);
     this.setData('isDead', false);
-  };
+  }
 
   explode(canDestroy) {
     if (!this.getData('isDead')) {
       this.setTexture('sprExplosion');
       this.play('sprExplosion');
-  
+
       this.scene.sfx.explosions[0].play();
 
       if (this.shootTimer !== undefined) {
@@ -33,7 +33,7 @@ export class Entity extends Phaser.GameObjects.Sprite {
     }, this);
 
     this.setData('isDead', true);
-  };
+  }
 
   onDeath(data) {
     this.scene.time.addEvent({
@@ -44,5 +44,5 @@ export class Entity extends Phaser.GameObjects.Sprite {
       callBackScope: true,
       loop: false,
     });
-  };
+  }
 }

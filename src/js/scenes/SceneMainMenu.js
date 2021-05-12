@@ -1,11 +1,11 @@
-import { ScrollingBackground } from "./utils/ScrollingBackground";
+import ScrollingBackground from './utils/ScrollingBackground';
 
 export default class SceneMainMenu extends Phaser.Scene {
   constructor() {
     super({
       key: 'SceneMainMenu',
     });
-  };
+  }
 
   create() {
     this.sfx = {
@@ -31,7 +31,7 @@ export default class SceneMainMenu extends Phaser.Scene {
 
     this.btnPlay.on('pointerdown', () => {
       this.btnPlay.setTexture('sprBtnPlayDown');
-      this.sfx.btnDown.play();      
+      this.sfx.btnDown.play();
     });
 
     this.btnPlay.on('pointerup', () => {
@@ -39,29 +39,29 @@ export default class SceneMainMenu extends Phaser.Scene {
       this.scene.start('SceneMain');
     });
 
-    this.title = this.add.text(this.game.config.width * .5, 128, 'SHOOTERJS', {
+    this.title = this.add.text(this.game.config.width * 0.5, 128, 'SHOOTERJS', {
       fontFamily: 'monospace',
       fontSize: 60,
       fontStyle: 'bold',
       color: '#fff',
       align: 'center',
     });
-    this.title.setOrigin(.5);
+    this.title.setOrigin(0.5);
 
     this.backgrounds = [];
     for (let i = 0; i < 5; i += 1) {
-      let bg = new ScrollingBackground(this, 'sprBg1', -(i * 10));
+      const bg = new ScrollingBackground(this, 'sprBg1', -(i * 10));
       this.backgrounds.push(bg);
     }
 
-    let bg = this.add.sprite(0, 0, 'sprBg0');
+    const bg = this.add.sprite(0, 0, 'sprBg0');
     bg.setDepth(-10);
 
     this.btnLeaderboard = this.add.sprite(
       this.game.config.width * 0.5,
       this.game.config.height * 0.5,
-      'sprBtnLeaderboard'
-    )
+      'sprBtnLeaderboard',
+    );
     this.btnLeaderboard.setInteractive();
 
     this.btnLeaderboard.on('pointerover', () => {
@@ -82,17 +82,15 @@ export default class SceneMainMenu extends Phaser.Scene {
       this.scene.start('SceneLeaderboard');
     });
 
-
     this.btnOptions = this.add.sprite(
-      this.game.config.width *.5,
-      this.game.config.height *.6,
+      this.game.config.width * 0.5,
+      this.game.config.height * 0.6,
     );
 
-
     this.btnControls = this.add.sprite(
-      this.game.config.width * .5,
-      this.game.config.height * .6,
-      'sprBtnControls'
+      this.game.config.width * 0.5,
+      this.game.config.height * 0.6,
+      'sprBtnControls',
     );
     this.btnControls.setInteractive();
 
@@ -114,11 +112,10 @@ export default class SceneMainMenu extends Phaser.Scene {
       this.scene.start('Controls');
     });
 
-
     this.btnCredits = this.add.sprite(
-      this.game.config.width * .5,
-      this.game.config.height * .7,
-      'sprBtnCredits'
+      this.game.config.width * 0.5,
+      this.game.config.height * 0.7,
+      'sprBtnCredits',
     );
     this.btnCredits.setInteractive();
 
@@ -139,14 +136,11 @@ export default class SceneMainMenu extends Phaser.Scene {
     this.btnCredits.on('pointerup', () => {
       this.scene.start('Credits');
     });
-
-
-  };
-
+  }
 
   update() {
     for (let i = 0; i < this.backgrounds.length; i += 1) {
       this.backgrounds[i].update();
     }
-  };
+  }
 }

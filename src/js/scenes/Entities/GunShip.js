@@ -1,10 +1,10 @@
-import { Entity } from './Entity';
-import { EnemyLaser } from './EnemyLaser';
+import Entity from './Entity';
+import EnemyLaser from './EnemyLaser';
 
-export class GunShip extends Entity {
+export default class GunShip extends Entity {
   constructor(scene, x, y) {
     super(scene, x, y, 'sprEnemyShip1', 'GunShip');
-    this.play('sprEnemyShip1').setScale(.4);
+    this.play('sprEnemyShip1').setScale(0.4);
     this.body.velocity.x = Phaser.Math.Between(-50, -100);
     this.shootTimer = this.scene.time.addEvent({
       delay: 2000,
@@ -12,7 +12,7 @@ export class GunShip extends Entity {
         const laser = new EnemyLaser(
           this.scene,
           this.x,
-          this.y
+          this.y,
         );
         laser.setScale(this.scaleX);
         this.scene.enemyLasers.add(laser);
@@ -20,7 +20,7 @@ export class GunShip extends Entity {
       callbackScope: this,
       loop: true,
     });
-  };
+  }
 
   onDestroy() {
     if (this.shootTimer !== undefined) {
@@ -28,5 +28,5 @@ export class GunShip extends Entity {
         this.shootTimer.remove(false);
       }
     }
-  };
-};
+  }
+}

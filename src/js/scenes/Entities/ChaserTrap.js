@@ -1,6 +1,6 @@
-import { Entity } from "./Entity";
+import Entity from './Entity';
 
-export class ChaserTrap extends Entity {
+export default class ChaserTrap extends Entity {
   constructor(scene, x, y) {
     super(scene, x, y, 'sprEnemyTrap', 'ChaserTrap');
     this.body.velocity.x = Phaser.Math.Between(-50, -100);
@@ -9,24 +9,24 @@ export class ChaserTrap extends Entity {
       CHASE: 'CHASE',
     };
     this.state = this.states.MOVE_DOWN;
-  };
+  }
 
   update() {
     if (!this.getData('isDead') && this.scene.player) {
       if (Phaser.Math.Distance.Between(
-          this.x,
-          this.y,
-          this.scene.player.x,
-          this.scene.player.y,
-        ) < 320 && !this.scene.player.getData('isDead')) {
-          this.state = this.states.CHASE;
-        }
+        this.x,
+        this.y,
+        this.scene.player.x,
+        this.scene.player.y,
+      ) < 320 && !this.scene.player.getData('isDead')) {
+        this.state = this.states.CHASE;
+      }
 
-      if (this.state == this.states.CHASE) {
-        let dx = this.scene.player.x - this.x;
-        let dy = this.scene.player.y - this.y;
+      if (this.state === this.states.CHASE) {
+        const dx = this.scene.player.x - this.x;
+        const dy = this.scene.player.y - this.y;
 
-        let angle = Math.atan2(dy, dx);
+        const angle = Math.atan2(dy, dx);
 
         const speed = 100;
         this.body.setVelocity(
@@ -42,4 +42,4 @@ export class ChaserTrap extends Entity {
       this.angle += 5;
     }
   }
-};
+}

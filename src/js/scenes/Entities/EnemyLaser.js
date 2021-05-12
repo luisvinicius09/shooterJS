@@ -1,8 +1,8 @@
-import { Entity } from "./Entity";
+import Entity from "./Entity";
 
-export class EnemyLaser extends Entity {
+export default class EnemyLaser extends Entity {
   constructor(scene, x, y) {
     super(scene, x, y, 'sprEnemyLaser');
     this.body.velocity.x = -200;
-  };
-};
+  }
+}

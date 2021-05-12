@@ -16,7 +16,7 @@ const config = {
   parent: 'divId',
   height: 560,
   dom: {
-    createContainer: true
+    createContainer: true,
   },
   backgroundColor: 'black',
   physics: {
@@ -31,7 +31,7 @@ const config = {
     SceneMainMenu,
     SceneCredits,
     SceneControls,
-    // SceneOptions,
+    SceneOptions,
     SceneMain,
     SceneLeaderboard,
     SceneGameOver,
@@ -41,4 +41,4 @@ const config = {
   roundPixels: true,
 };
 
-new Phaser.Game(config);
+const game = new Phaser.Game(config);

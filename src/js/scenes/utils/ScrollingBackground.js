@@ -1,4 +1,4 @@
-export class ScrollingBackground {
+export default class ScrollingBackground {
   constructor(scene, key, velocityX) {
     this.scene = scene;
     this.key = key;
@@ -9,7 +9,7 @@ export class ScrollingBackground {
 
   createLayers() {
     for (let i = 0; i < 2; i += 1) {
-      let layer = this.scene.add.sprite(0, 0, this.key);
+      const layer = this.scene.add.sprite(0, 0, this.key);
       layer.x = (layer.displayWidth + 1);
       const flipX = Phaser.Math.Between(0, 10) >= 5 ? -1 : 1;
       const flipY = Phaser.Math.Between(0, 10) >= 5 ? -1 : 1;
@@ -25,9 +25,9 @@ export class ScrollingBackground {
   update() {
     if (this.layers.getChildren()[0].y > 0) {
       for (let i = 0; i < this.layers.getChildren().length; i += 1) {
-          let laser = this.layers.getChildren()[i];
-          layer.y = (-laser.displayHeight) + (layer.displayHeight * i);
+        const layer = this.layers.getChildren()[i];
+        layer.x = (-layer.displayWidth) + (layer.displayWidth * i);
       }
-    };
-  };
+    }
+  }
 }
