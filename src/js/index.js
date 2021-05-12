@@ -28,6 +28,7 @@ const config = {
     SceneBoot,
     ScenePreloader,
     SceneMainMenu,
+    SceneCredits,
     // SceneOptions,
     SceneMain,
     SceneLeaderboard,
