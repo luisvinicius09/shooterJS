@@ -131,6 +131,10 @@ export default class ScenePreloader extends Phaser.Scene {
     this.load.image('sprBtnCreditsHover', './img/buttons/sprBtnCreditsHover.png');
     this.load.image('sprBtnCreditsDown', './img/buttons/sprBtnCreditsDown.png');
 
+    this.load.image('sprBtnControls', './img/buttons/sprBtnControls.png');
+    this.load.image('sprBtnControlsHover', './img/buttons/sprBtnControlsHover.png');
+    this.load.image('sprBtnControlsDown', './img/buttons/sprBtnControlsDown.png');
+
     this.load.audio('sndBtnOver', './audio/buttons/sndBtnOver.wav');
     this.load.audio('sndBtnDown', './audio/buttons/sndBtnDown.wav');
   };
