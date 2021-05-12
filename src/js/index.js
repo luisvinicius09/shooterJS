@@ -25,10 +25,10 @@ const config = {
     },
   },
   scene: [
-    // ScenePreloader,
-    // SceneBoot,
-    // SceneOptions,
+    SceneBoot,
+    ScenePreloader,
     SceneMainMenu,
+    // SceneOptions,
     SceneMain,
     SceneLeaderboard,
     SceneGameOver,
