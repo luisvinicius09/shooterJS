@@ -81,7 +81,7 @@ export default class SceneGameOver extends Phaser.Scene {
           if (this.warning) {
             this.warning.destroy();
           }
-          this.warning = this.add.text(this.game.config.width * 0.5, this.game.config.height * 0.35, "You have to score at least 10 points to save your score.");
+          this.warning = this.add.text(this.game.config.width * 0.5, this.game.config.height * 0.35, 'You have to score at least 10 points to save your score.');
           this.warning.setOrigin(0.5);
         }
         axios.post(`https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameId}/scores/`, {

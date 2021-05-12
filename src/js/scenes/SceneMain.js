@@ -187,9 +187,9 @@ export default class SceneMain extends Phaser.Scene {
 
       enemy.update();
 
-      if (enemy.x < -enemy.displayWidth * 4 
-        || enemy.x > this.game.config.width + enemy.displayWidth 
-        || enemy.y < -enemy.displayHeight 
+      if (enemy.x < -enemy.displayWidth * 4
+        || enemy.x > this.game.config.width + enemy.displayWidth
+        || enemy.y < -enemy.displayHeight
         || enemy.y > this.game.config.height + enemy.displayHeight
       ) {
         if (enemy) {
@@ -205,8 +205,8 @@ export default class SceneMain extends Phaser.Scene {
       const laser = this.enemyLasers.getChildren()[i];
       laser.update();
       if (laser.x < -laser.displayWidth
-        || laser.x > this.game.config.width + laser.displayWidth 
-        || laser.y < -laser.displayHeight 
+        || laser.x > this.game.config.width + laser.displayWidth
+        || laser.y < -laser.displayHeight
         || laser.y > this.game.config.height + laser.displayHeight
       ) {
         if (laser) {

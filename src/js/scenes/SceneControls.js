@@ -10,7 +10,7 @@ export default class SceneControls extends Phaser.Scene {
       btnOver: this.sound.add('sndBtnOver', { volume: 0.3 }),
       btnDown: this.sound.add('sndBtnDown', { volume: 0.3 }),
     };
-    
+
     this.btnMenu = this.add.sprite(
       this.game.config.width * 0.5,
       this.game.config.height * 0.1,
@@ -61,7 +61,7 @@ export default class SceneControls extends Phaser.Scene {
       this.game.config.height * 0.5,
       `CONTROL THE SHIP: \nYou need to use the arrows from your keyboard... 
       \n     Arrow UP: Ship goes up \n     Arrow DOWN: Ship goes down 
-      \n     Arrow LEFT: Ship goes left \n     Arrow RIGHT: Ship goes right`
+      \n     Arrow LEFT: Ship goes left \n     Arrow RIGHT: Ship goes right`,
     );
   }
 }

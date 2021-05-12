@@ -82,12 +82,14 @@ export default class SceneLeaderboard extends Phaser.Scene {
           thumb: this.rexUI.add.roundRectangle(0, 0, 0, 0, 10, COLOR_LIGHT),
         },
         createCellContainerCallback: (cell) => {
-          const { scene, width, height, item } = cell;
+          const {
+            scene, width, height, item
+          } = cell;
           return scene.rexUI.add.label({
             width,
             height,
             background: scene.rexUI.add.roundRectangle(0, 0, 20, 20, 0)
-            .setStrokeStyle(2, COLOR_DARK),
+              .setStrokeStyle(2, COLOR_DARK),
             icon: scene.add.text(0, 0, item.user),
             text: scene.add.text(0, 0, item.score),
             space: {
@@ -99,15 +101,15 @@ export default class SceneLeaderboard extends Phaser.Scene {
       }),
     }).layout();
 
-    this.loading = this.add.text(this.game.config.width * 0.5, this.game.config.height * 0.5, 'Loading...')
+    this.loading = this.add.text(this.game.config.width * 0.5, this.game.config.height * 0.5, 'Loading...');
     this.loading.setOrigin(0.5);
 
     axios.get(`https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameId}/scores/`)
-  .then((res) => {
+      .then((res) => {
     this.loading.destroy();
     const response = res.data.result;
     response.sort((a, b) => b.score - a.score);
     tabs.getElement('panel').setItems(response).scrollToTop();
-  });
+      });
   }
 }

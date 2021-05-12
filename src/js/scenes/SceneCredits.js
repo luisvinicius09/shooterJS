@@ -51,7 +51,7 @@ export default class SceneCredits extends Phaser.Scene {
     this.textOne.setOrigin(0.5);
 
     this.textOne.on('pointerdown', () => {
-      window.open('http://millionthvector.blogspot.de', '_blank')
+      window.open('http://millionthvector.blogspot.de', '_blank');
     });
 
     this.textTwo = this.add.text(this.game.config.width * 0.5, this.game.config.height * 0.40, 'Lasers assets By Wenrexa');

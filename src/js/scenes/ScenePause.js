@@ -20,7 +20,7 @@ export default class ScenePause extends Phaser.Scene {
       color: '#fff',
       align: 'center',
     });
-    this.title.setOrigin(.5);
+    this.title.setOrigin(0.5);
     this.btnResume = this.add.sprite(
       this.game.config.width * 0.5,
       this.game.config.height * 0.5,
