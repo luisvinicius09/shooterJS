@@ -10,41 +10,6 @@ export default class SceneMain extends Phaser.Scene {
     });
   };
 
-  preload() {
-    this.load.spritesheet('sprPlayer', './img/playerShip.png', {
-      frameWidth: 478,
-      frameHeight: 348,
-    });
-
-    this.load.image('sprLaser1', './img/playerLaser1.png');
-
-    this.load.spritesheet('sprExplosion', './img/explosion1.png', {
-      frameWidth: 50,
-      frameHeight: 50,
-    });
-
-    this.load.spritesheet('sprEnemyShip0', './img/enemyShip0.png', {
-      frameWidth: 92,
-      frameHeight: 142,
-    });
-
-    this.load.spritesheet('sprEnemyShip1', './img/enemyShip1.png', {
-      frameWidth: 106,
-      frameHeight: 145,
-    });
-
-    this.load.image('sprEnemyTrap', './img/enemyTrap.png');
-
-    this.load.image('sprEnemyLaser', './img/enemyLaser.png');
-
-    this.load.audio('sndLaser', './audio/laserfire02.ogg');
-    this.load.audio('sndExplosion', './audio/explosion1.wav');
-
-    this.load.image('sprBg0', './img/background.png');
-    this.load.image('sprBg1', './img/sprBg1.png');
-    this.load.image('sprBg2', './img/sprBg2.png');
-  };
-
   create() {    
     this.keyUp = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.UP);
     this.keyDown = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.DOWN);

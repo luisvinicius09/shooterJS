@@ -14,13 +14,6 @@ export default class SceneLeaderboard extends Phaser.Scene {
   };
 
   preload() {
-    this.load.image('sprBtnMenu', './img/buttons/sprBtnMenu.png');
-    this.load.image('sprBtnMenuHover', './img/buttons/sprBtnMenuHover.png');
-    this.load.image('sprBtnMenuDown', './img/buttons/sprBtnMenuDown.png');
-
-    this.load.audio('sndBtnOver', './audio/buttons/sndBtnOver.wav');
-    this.load.audio('sndBtnDown', './audio/buttons/sndBtnDown.wav');
-
     this.load.scenePlugin({
       key: 'rexuiplugin',
       url: 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexuiplugin.min.js',

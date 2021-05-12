@@ -7,25 +7,6 @@ export default class SceneMainMenu extends Phaser.Scene {
     });
   };
 
-  preload() {
-    this.load.image('sprBtnPlay', './img/buttons/sprBtnPlay.png');
-    this.load.image('sprBtnPlayHover', './img/buttons/sprBtnPlayHover.png');
-    this.load.image('sprBtnPlayDown', './img/buttons/sprBtnPlayDown.png');
-    this.load.image('sprBtnRestart', './img/buttons/sprBtnRestart.png');
-    this.load.image('sprBtnRestartHover', './img/buttons/sprBtnRestartHover.png');
-    this.load.image('sprBtnRestartDown', './img/buttons/sprBtnRestartDown.png');
-    this.load.image('sprBtnLeaderboard', './img/buttons/sprBtnLeaderboard.png');
-    this.load.image('sprBtnLeaderboardHover', './img/buttons/sprBtnLeaderboardHover.png');
-    this.load.image('sprBtnLeaderboardDown', './img/buttons/sprBtnLeaderboardDown.png');
-
-    this.load.audio('sndBtnOver', './audio/buttons/sndBtnOver.wav');
-    this.load.audio('sndBtnDown', './audio/buttons/sndBtnDown.wav');
-
-    this.load.image('sprBg0', './img/background.png');
-    this.load.image('sprBg1', './img/sprBg1.png');
-    this.load.image('sprBg2', './img/sprBg2.png');
-  };
-
   create() {
     this.sfx = {
       btnOver: this.sound.add('sndBtnOver', { volume: 0.3 }),

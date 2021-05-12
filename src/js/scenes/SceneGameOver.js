@@ -15,22 +15,6 @@ export default class SceneGameOver extends Phaser.Scene {
     this.score = data.score;
   }
 
-  preload() {
-    this.load.image('sprBtnSave', './img/buttons/sprBtnSave.png');
-    this.load.image('sprBtnSaveHover', './img/buttons/sprBtnSaveHover.png');
-    this.load.image('sprBtnSaveDown', './img/buttons/sprBtnSaveDown.png');
-    this.load.image('sprBtnRestart', './img/buttons/sprBtnRestart.png');
-    this.load.image('sprBtnRestartHover', './img/buttons/sprBtnRestartHover.png');
-    this.load.image('sprBtnRestartDown', './img/buttons/sprBtnRestartDown.png');
-
-    this.load.audio('sndBtnOver', './audio/buttons/sndBtnOver.wav');
-    this.load.audio('sndBtnDown', './audio/buttons/sndBtnDown.wav');
-
-    this.load.image('sprBg0', './img/background.png');
-    this.load.image('sprBg1', './img/sprBg1.png');
-    this.load.image('sprBg2', './img/sprBg2.png');
-  };
-
   create() {
     this.title = this.add.text(this.game.config.width * .5, 128, 'GAME OVER', {
       fontFamily: 'monospace',

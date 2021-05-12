@@ -5,18 +5,6 @@ export default class ScenePause extends Phaser.Scene {
     });
   };
 
-  preload() {
-    this.load.image('sprBtnResume', './img/buttons/sprBtnResume.png');
-    this.load.image('sprBtnResumeHover', './img/buttons/sprBtnResumeHover.png');
-    this.load.image('sprBtnResumeDown', './img/buttons/sprBtnResumeDown.png');
-    this.load.image('sprBtnMenu', './img/buttons/sprBtnMenu.png');
-    this.load.image('sprBtnMenuHover', './img/buttons/sprBtnMenuHover.png');
-    this.load.image('sprBtnMenuDown', './img/buttons/sprBtnMenuDown.png');
-
-    this.load.audio('sndBtnOver', './audio/buttons/sndBtnOver.wav');
-    this.load.audio('sndBtnDown', './audio/buttons/sndBtnDown.wav');
-  };
-
   create() {
     this.keyEsc = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ESC);
 
