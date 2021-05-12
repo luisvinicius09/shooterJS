@@ -6,51 +6,52 @@ export default class ScenePreloader extends Phaser.Scene {
   };
 
   preload() {
+    const width = this.game.config.width;
+    const height = this.game.config.height;
+
     const progressBar = this.add.graphics();  
     const progressBox = this.add.graphics();
     progressBox.fillStyle(0x222222, .8);
-    progressBox.fillRect(240, 270, 320, 50);
+    progressBox.fillRect(260, 270, 320, 50);
 
-    const width = this.game.config.width;
-    const height = this.game.config.height;
     const loadingText = this.make.text({
       x: width * .5,
-      y: height / 2 - 50,
+      y: height *.5 - 50,
       text: 'Loading...',
       style: {
         font: '20px monospace',
         fill: '#fff',
       }, 
     });
-    loadingText.setOrigin(.5, .5);
+    loadingText.setOrigin(.5);
 
     const percentText = this.make.text({
-      x: width / 2,
-      y: height / 2 - 5,
+      x: width * .5,
+      y: height * .5 + 15,
       text: '0%',
       style: {
         font: '18px monospace',
         fill: '#ffffff',
       },
     });
-    percentText.setOrigin(.5, .5);
+    percentText.setOrigin(.5);
 
     const assetText = this.make.text({
-      x: width / 2,
-      y: height / 2 + 50,
+      x: width * .5,
+      y: height * .5 + 50,
       text: '',
       style: {
         font: '18px monospace',
         fill: '#ffffff'
       },
     });
-    assetText.setOrigin(.5, .5);
+    assetText.setOrigin(.5);
 
     this.load.on('progress', function (value) {
       percentText.setText(parseInt(value * 100) + '%');
       progressBar.clear();
       progressBar.fillStyle(0xffffff, 1);
-      progressBar.fillRect(250, 280, 300 * value, 30);
+      progressBar.fillRect(270, 280, 300 * value, 30);
     });
 
     this.load.on('fileprogress', (file) => {
@@ -118,7 +119,7 @@ export default class ScenePreloader extends Phaser.Scene {
     this.load.image('sprBtnLeaderboard', './img/buttons/sprBtnLeaderboard.png');
     this.load.image('sprBtnLeaderboardHover', './img/buttons/sprBtnLeaderboardHover.png');
     this.load.image('sprBtnLeaderboardDown', './img/buttons/sprBtnLeaderboardDown.png');
-    
+
     this.load.image('sprBg0', './img/background.png');
     this.load.image('sprBg1', './img/sprBg1.png');
     this.load.image('sprBg2', './img/sprBg2.png');
@@ -132,7 +133,6 @@ export default class ScenePreloader extends Phaser.Scene {
 
     this.load.audio('sndBtnOver', './audio/buttons/sndBtnOver.wav');
     this.load.audio('sndBtnDown', './audio/buttons/sndBtnDown.wav');
-    
   };
 
   init() {
