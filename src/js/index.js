@@ -3,6 +3,7 @@ import ScenePreloader from './scenes/ScenePreloader';
 import SceneBoot from './scenes/SceneBoot';
 import SceneOptions from './scenes/SceneOptions';
 import SceneCredits from './scenes/SceneCredits';
+import SceneControls from './scenes/SceneControls';
 import SceneMainMenu from './scenes/SceneMainMenu';
 import SceneMain from './scenes/SceneMain';
 import SceneLeaderboard from './scenes/SceneLeaderboard';
@@ -29,6 +30,7 @@ const config = {
     ScenePreloader,
     SceneMainMenu,
     SceneCredits,
+    SceneControls,
     // SceneOptions,
     SceneMain,
     SceneLeaderboard,
