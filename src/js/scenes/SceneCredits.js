@@ -1,3 +1,5 @@
+import Phaser from 'phaser';
+
 export default class SceneCredits extends Phaser.Scene {
   constructor() {
     super({

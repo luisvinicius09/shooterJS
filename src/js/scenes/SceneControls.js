@@ -1,3 +1,5 @@
+import Phaser from 'phaser';
+
 export default class SceneControls extends Phaser.Scene {
   constructor() {
     super({

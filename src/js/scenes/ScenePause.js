@@ -1,3 +1,5 @@
+import Phaser from 'phaser';
+
 export default class ScenePause extends Phaser.Scene {
   constructor() {
     super({

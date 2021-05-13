@@ -1,3 +1,4 @@
+import Phaser from 'phaser';
 import axios from 'axios';
 import ScrollingBackground from './utils/ScrollingBackground';
 
