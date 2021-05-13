@@ -5,7 +5,7 @@ const COLOR_PRIMARY = 0x8ca0ab;
 const COLOR_LIGHT = 0x9badb7;
 const COLOR_DARK = 0x7d94a1;
 
-const gameId = '7LB4DVqRjgyTZD1s38uU';
+const gameId = 'BX3P0HU4Xq0E2i101khR';
 export default class SceneLeaderboard extends Phaser.Scene {
   constructor() {
     super({
