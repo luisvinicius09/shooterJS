@@ -1,3 +1,4 @@
+import Phaser from 'phaser';
 import axios from 'axios';
 
 const COLOR_PRIMARY = 0x8ca0ab;
