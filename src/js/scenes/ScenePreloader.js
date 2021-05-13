@@ -60,11 +60,6 @@ export default class ScenePreloader extends Phaser.Scene {
     });
 
     this.load.on('complete', () => {
-      // progressBar.destroy();
-      // progressBox.destroy();
-      // loadingText.destroy();
-      // percentText.destroy();
-      // assetText.destroy();
       this.ready();
     });
 
