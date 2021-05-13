@@ -61,7 +61,7 @@ To get a local copy up and running follow these simple example steps.
 
 ### Run tests
 
-- To run the test you can just use `npm run jest` on the console/terminal.
+#### Unfortunately, it wasn't possible to write tests for this project. All functionalities use Phaser directly and it's not possible to change that.
 
 ### Deployment
 
