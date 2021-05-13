@@ -12,7 +12,7 @@ export default class ScenePreloader extends Phaser.Scene {
 
     const progressBar = this.add.graphics();
     const progressBox = this.add.graphics();
-    progressBox.fillStyle(0x222222, .8);
+    progressBox.fillStyle(0x222222, 0.8);
     progressBox.fillRect(260, 270, 320, 50);
 
     const loadingText = this.make.text({
@@ -35,7 +35,7 @@ export default class ScenePreloader extends Phaser.Scene {
         fill: '#ffffff',
       },
     });
-    percentText.setOrigin(.5);
+    percentText.setOrigin(0.5);
 
     const assetText = this.make.text({
       x: width * 0.5,

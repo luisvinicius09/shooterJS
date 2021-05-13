@@ -11,7 +11,7 @@ export default class SceneLeaderboard extends Phaser.Scene {
     super({
       key: 'SceneLeaderboard',
     });
-    this.scores;
+    this.scores = undefined;
   }
 
   preload() {
@@ -84,7 +84,7 @@ export default class SceneLeaderboard extends Phaser.Scene {
         },
         createCellContainerCallback: (cell) => {
           const {
-            scene, width, height, item
+            scene, width, height, item,
           } = cell;
           return scene.rexUI.add.label({
             width,
@@ -107,10 +107,10 @@ export default class SceneLeaderboard extends Phaser.Scene {
 
     axios.get(`https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameId}/scores/`)
       .then((res) => {
-    this.loading.destroy();
-    const response = res.data.result;
-    response.sort((a, b) => b.score - a.score);
-    tabs.getElement('panel').setItems(response).scrollToTop();
+        this.loading.destroy();
+        const response = res.data.result;
+        response.sort((a, b) => b.score - a.score);
+        tabs.getElement('panel').setItems(response).scrollToTop();
       });
   }
 }
