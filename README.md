@@ -22,7 +22,7 @@
 
 ## Live Demo
 
-[Live Demo Link](https://livedemo.com)
+[Live Demo](https://shooterjs.netlify.app)
 
 
 ## Getting Started
