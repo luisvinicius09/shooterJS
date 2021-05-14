@@ -1,10 +1,14 @@
 {
-  "name": "app_name_here",
+  "name": "shooterjs",
   "version": "1.0.0",
-  "description": "PUT THE PROJECT DESCRIPTION HERE",
+  "description": "Simple shooter game build with PhaserJS",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "webpackServer": "webpack serve",
+    "server": "http-server build"
   },
   "repository": {
     "type": "git",
@@ -14,7 +18,22 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "REMEBER TO PUT THE ISSUES PAGE RIGHT HERE"
+    "url": "https://github.com/luisvinicius09/shooterJS/issues"
   },
-  "homepage": "GITHUB PAGE OR URL OF THE PROJECT HERE"
+  "homepage": "https://github.com/luisvinicius09/shooterJS",
+  "devDependencies": {
+    "@babel/core": "^7.14.0",
+    "@babel/preset-env": "^7.14.0",
+    "babel-loader": "^8.2.2",
+    "copy-webpack-plugin": "^8.1.1",
+    "http-server": "^0.12.3",
+    "jest": "^26.6.3",
+    "webpack": "^5.36.2",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "phaser": "^3.54.0"
+  }
 }

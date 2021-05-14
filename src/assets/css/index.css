@@ -1,0 +1,17 @@
+div {
+  pointer-events: none;
+  margin-right: auto !important;
+  margin-left: auto;
+  left: 0;
+  right: 0;
+}
+
+input {
+  pointer-events: all;
+  text-align: center;
+}
+
+canvas {
+  margin: auto;
+  display: flex;
+}
