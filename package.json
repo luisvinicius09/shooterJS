@@ -4,10 +4,11 @@
   "description": "Simple shooter game build with PhaserJS",
   "main": "index.js",
   "scripts": {
-    "build": "npx webpack",
-    "watch": "npx webpack --watch",
-    "webpackServer": "npx webpack serve",
-    "server": "npx http-server build"
+    "test": "jest",
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "webpackServer": "webpack serve",
+    "server": "http-server build"
   },
   "repository": {
     "type": "git",
