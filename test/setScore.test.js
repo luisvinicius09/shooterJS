@@ -8,9 +8,9 @@ describe('Testing the post functionality', () => {
       result: 'Leaderboard score created correctly.',
     });
     setScore('Test', 4000)
-    .then((data) => {
-      expect(data.result).toMatch('Leaderboard score created correctly.');
-    });
+      .then((data) => {
+        expect(data.result).toMatch('Leaderboard score created correctly.');
+      });
   });
 
   it('Should not save the score into the API with empty score', () => {
@@ -18,8 +18,8 @@ describe('Testing the post functionality', () => {
       result: 'You need to provide a valid score for the leaderboard',
     });
     setScore('Test', '')
-    .then((data) => {
-      expect(data.result).toMatch('You need to provide a valid score for the leaderboard');
-    });
+      .then((data) => {
+        expect(data.result).toMatch('You need to provide a valid score for the leaderboard');
+      });
   });
 });

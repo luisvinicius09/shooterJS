@@ -24,9 +24,9 @@ describe('Testing the retrieve functionality', () => {
       ],
     });
     getScore()
-    .then((data) => {
-      expect(data.result[2].user).toMatch('Pierre Paul');
-    });
+      .then((data) => {
+        expect(data.result[2].user).toMatch('Pierre Paul');
+      });
   });
 
   it('Returns the second user name', () => {
@@ -50,8 +50,8 @@ describe('Testing the retrieve functionality', () => {
       ],
     });
     getScore()
-    .then((data) => {
-      expect(data.result[1].user).toMatch('Roman Pierce')
-    });
+      .then((data) => {
+        expect(data.result[1].user).toMatch('Roman Pierce');
+      });
   });
 });
