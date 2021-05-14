@@ -14,6 +14,10 @@
   <img src="./app_screenshot.png">
 </p>
 
+<p align="center">
+  The game design document can be found <a href="https://github.com/luisvinicius09/shooterJS/blob/alphaV2/gdd.md">here</a>.
+</p>
+
 ## Built With
 
 - Phaser.js
