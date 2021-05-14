@@ -8,7 +8,7 @@ const setScore = (userName = 'User', score = 10) => {
     score: score,
   })
   .then((res) => {
-    
+    return res.json();
   })
   .catch((err) => {
     return err;

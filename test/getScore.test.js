@@ -29,7 +29,7 @@ describe('Testing the retrieve functionality', () => {
     });
   });
 
-  it('Returns the second user name', async () => {
+  it('Returns the second user name', () => {
     getScore.mockResolvedValue({
       result: [{
         user: 'David Jack',
