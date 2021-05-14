@@ -61,7 +61,7 @@ To get a local copy up and running follow these simple example steps.
 
 ### Run tests
 
-#### Unfortunately, it wasn't possible to write tests for this project. All functionalities use Phaser directly and it's not possible to change that.
+- To run test use `npm run jest` or `yarn test` on the console/terminal
 
 ### Deployment
 
