@@ -23,7 +23,7 @@ export default class SceneLeaderboard extends Phaser.Scene {
       sceneKey: 'rexUI',
     });
   }
-  
+
   // eslint-disable-next-line consistent-return
   create() {
     this.sfx = {
