@@ -105,12 +105,16 @@ export default class SceneLeaderboard extends Phaser.Scene {
     this.loading = this.add.text(this.game.config.width * 0.5, this.game.config.height * 0.5, 'Loading...');
     this.loading.setOrigin(0.5);
 
-    axios.get(`https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameId}/scores/`)
-      .then((res) => {
-        this.loading.destroy();
-        const response = res.data.result;
-        response.sort((a, b) => b.score - a.score);
-        tabs.getElement('panel').setItems(response).scrollToTop();
-      });
+    try {
+      axios.get(`https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${gameId}/scores/`)
+        .then((res) => {
+          this.loading.destroy();
+          const response = res.data.result;
+          response.sort((a, b) => b.score - a.score);
+          tabs.getElement('panel').setItems(response).scrollToTop();
+        });
+    } catch (err) {
+      return err;
+    }
   }
 }
