@@ -86,7 +86,7 @@ Give a ⭐️ if you like this project!
 
 ## 📝 License
 
-This project is [MIT](lic.url) licensed.
+This project is [MIT](https://github.com/luisvinicius09/shooterJS/blob/alphaV2/LICENSE) licensed.
 
 <h2 align="center">
   Author(s)  
