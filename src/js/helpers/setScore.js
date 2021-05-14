@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-unresolved
 const axios = require('axios');
 
 const gameId = '7LB4DVqRjgyTZD1s38uU';
@@ -7,9 +8,7 @@ const setScore = (userName = 'User', score = 10) => {
     user: userName,
     score,
   })
-    .then((res) => {
-      return res.json();
-    })
+    .then((res) => res.json())
     .catch((err) => err);
 };
 

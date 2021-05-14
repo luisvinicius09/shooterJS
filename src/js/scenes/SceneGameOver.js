@@ -1,4 +1,6 @@
+// eslint-disable-next-line import/no-unresolved
 import Phaser from 'phaser';
+// eslint-disable-next-line import/no-unresolved
 import axios from 'axios';
 import ScrollingBackground from './utils/ScrollingBackground';
 

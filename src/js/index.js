@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-unresolved
 import Phaser from 'phaser';
 import ScenePreloader from './scenes/ScenePreloader';
 import SceneBoot from './scenes/SceneBoot';

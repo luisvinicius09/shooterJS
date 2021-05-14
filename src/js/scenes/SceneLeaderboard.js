@@ -1,4 +1,6 @@
+// eslint-disable-next-line import/no-unresolved
 import Phaser from 'phaser';
+// eslint-disable-next-line import/no-unresolved
 import axios from 'axios';
 
 const COLOR_PRIMARY = 0x8ca0ab;
@@ -21,7 +23,7 @@ export default class SceneLeaderboard extends Phaser.Scene {
       sceneKey: 'rexUI',
     });
   }
-
+// eslint-disable-next-line consistent-return
   create() {
     this.sfx = {
       btnOver: this.sound.add('sndBtnOver', { volume: 0.3 }),
