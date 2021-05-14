@@ -23,7 +23,8 @@ export default class SceneLeaderboard extends Phaser.Scene {
       sceneKey: 'rexUI',
     });
   }
-// eslint-disable-next-line consistent-return
+  
+  // eslint-disable-next-line consistent-return
   create() {
     this.sfx = {
       btnOver: this.sound.add('sndBtnOver', { volume: 0.3 }),
